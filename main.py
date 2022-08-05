@@ -8,7 +8,7 @@ def pull_egp():
     
     link_txt = open('link.txt', 'r')
 
-    today = date.today().strftime('%d%M%Y')
+    today = date.today().strftime('%d%m%Y')
     tomonth = date.today().strftime('%B')
     toyear = date.today().strftime('%Y')
 
