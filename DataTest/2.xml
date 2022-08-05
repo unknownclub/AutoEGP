@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="Windows-874" ?>
+<rss version="2.0">
+	<channel>
+		<title>ประกาศจัดซื้อจัดจ้างภาครัฐ</title>
+		<link>http://process3.gprocurement.go.th/egp2procmainWeb/procsearch.sch?homeflag=A&amp;proc_id=FPRO9965&amp;servlet=FPRO9965Servlet&amp;methodId=&amp;announceType=2</link>
+		<description>ประกาศจัดซื้อจัดจ้างภาครัฐล่าสุด</description>
+		<language>th-TH</language>
+		<lastBuildDate>Thu, 04 Aug 2022 09:53:42 ICT</lastBuildDate>
+		<copyright>Copyright ? 2008 All rights reserved.</copyright>
+		<image>
+			<title>ประกาศจัดซื้อจัดจ้างภาครัฐ</title>
+			<url>http://process3.gprocurement.go.th/EPROCRssFeedWeb/images/header_eGP1.jpg</url>
+			<link>http://www.gprocurement.go.th</link>
+		</image>
+		<countbyday>1</countbyday>
+		<item>
+			<title>ซ่อมแซมรถยนต์บรรทุก หมายเลขทะเบียน 81-0039 สฏ (กองช่าง) จำนวน 9 รายการ</title>
+			<link>http://process3.gprocurement.go.th/egp2procmainWeb/jsp/procsearch.sch?servlet=gojsp&amp;proc_id=ShowHTMLFile&amp;processFlows=Procure&amp;projectId=65087106197&amp;templateType=W2&amp;temp_Announ=A&amp;temp_itemNo=0&amp;seqNo=1</link>
+			<description></description>
+			<pubDate>2022-08-04</pubDate>
+			<guid></guid>
+		</item>
+		<item>
+			<title>จ้างซ่อมเครื่องปริ้นเตอร์ HP P๑๑๐๒ (กองคลัง) โดยวิธีเฉพาะเจาะจง</title>
+			<link>http://process3.gprocurement.go.th/egp2procmainWeb/jsp/procsearch.sch?servlet=gojsp&amp;proc_id=ShowHTMLFile&amp;processFlows=Procure&amp;projectId=65087076088&amp;templateType=W2&amp;temp_Announ=A&amp;temp_itemNo=0&amp;seqNo=1</link>
+			<description></description>
+			<pubDate>2022-08-03</pubDate>
+			<guid></guid>
+		</item>
+		<item>
+			<title>ซื้อวัสดุวิทยาศาสตร์และการแพทย์ จำนวน 2 รายการ โดยวิธีเฉพาะเจาะจง</title>
+			<link>http://process3.gprocurement.go.th/egp2procmainWeb/jsp/procsearch.sch?servlet=gojsp&amp;proc_id=ShowHTMLFile&amp;processFlows=Procure&amp;projectId=65087079016&amp;templateType=W2&amp;temp_Announ=A&amp;temp_itemNo=0&amp;seqNo=1</link>
+			<description></description>
+			<pubDate>2022-08-03</pubDate>
+			<guid></guid>
+		</item>
+		<item>
+			<title>ประกวดราคาจ้างก่อสร้างโครงการติดตั้งไฟสัญญาณจราจรระบบ VA ดวงโคม LED ตามแบบมาตรฐานกรมทางหลวง ด้วยวิธีประกวดราคาอิเล็กทรอนิกส์ (e-bidding)</title>
+			<link>http://process3.gprocurement.go.th/egp2procmainWeb/jsp/procsearch.sch?servlet=gojsp&amp;proc_id=ShowHTMLFile&amp;processFlows=Procure&amp;projectId=65077278051&amp;templateType=W2&amp;temp_Announ=A&amp;temp_itemNo=0&amp;seqNo=1</link>
+			<description></description>
+			<pubDate>2022-08-02</pubDate>
+			<guid></guid>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="Windows-874" ?>
+<rss version="2.0">
+	<channel>
+		<title>ประกาศจัดซื้อจัดจ้างภาครัฐ</title>
+		<link>http://process3.gprocurement.go.th/egp2procmainWeb/procsearch.sch?homeflag=A&amp;proc_id=FPRO9965&amp;servlet=FPRO9965Servlet&amp;methodId=&amp;announceType=2</link>
+		<description>ประกาศจัดซื้อจัดจ้างภาครัฐล่าสุด</description>
+		<language>th-TH</language>
+		<lastBuildDate>Thu, 04 Aug 2022 10:12:33 ICT</lastBuildDate>
+		<copyright>Copyright ? 2008 All rights reserved.</copyright>
+		<image>
+			<title>ประกาศจัดซื้อจัดจ้างภาครัฐ</title>
+			<url>http://process3.gprocurement.go.th/EPROCRssFeedWeb/images/header_eGP1.jpg</url>
+			<link>http://www.gprocurement.go.th</link>
+		</image>
+		<countbyday>0</countbyday>
+		<item>
+			<title>ซื้อเครื่องพิมพ์และเครื่องสำรองไฟ โดยวิธีเฉพาะเจาะจง</title>
+			<link>http://process3.gprocurement.go.th/egp2procmainWeb/jsp/procsearch.sch?servlet=gojsp&amp;proc_id=ShowHTMLFile&amp;processFlows=Procure&amp;projectId=65087022299&amp;templateType=W2&amp;temp_Announ=A&amp;temp_itemNo=0&amp;seqNo=1</link>
+			<description></description>
+			<pubDate>2022-08-02</pubDate>
+			<guid></guid>
+		</item>
+		<item>
+			<title>ซื้อเครื่องพิมพ์และเครื่องสำรองไฟ โดยวิธีเฉพาะเจาะจง</title>
+			<link>http://process3.gprocurement.go.th/egp2procmainWeb/jsp/procsearch.sch?servlet=gojsp&amp;proc_id=ShowHTMLFile&amp;processFlows=Procure&amp;projectId=65087022299&amp;templateType=W2&amp;temp_Announ=A&amp;temp_itemNo=0&amp;seqNo=3</link>
+			<description></description>
+			<pubDate>2022-08-02</pubDate>
+			<guid></guid>
+		</item>
+	</channel>
+</rss>
