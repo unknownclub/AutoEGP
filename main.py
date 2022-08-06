@@ -102,7 +102,7 @@ def upload():
 
 
 
-# auto_egp()
+auto_egp()
 upload()
 
 
