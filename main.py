@@ -82,7 +82,6 @@ def auto_egp():
             # print(list_test)
 
             df = pd.DataFrame(list_test)
-            df.drop_duplicates(subset='title', inplace=True)
 
             file_csv = path_location + '/' + today + '.csv'     # .csv ภาษาไทย เอ่อออ
 
@@ -94,11 +93,16 @@ def auto_egp():
 
 
 def upload():
-    pass
+
+    file_csv = path_location + '/' + today + '.csv'
+    df = pd.read_csv(file_csv)
+    df.drop_duplicates(subset='title', inplace=True)
+    # print(df)
+    df.to_csv(file_csv, index=False)
 
 
 
-auto_egp()
+# auto_egp()
 upload()
 
 
