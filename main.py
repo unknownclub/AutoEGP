@@ -1,4 +1,3 @@
-from posixpath import split
 from urllib.request import urlopen
 import xml.etree.ElementTree as ET
 import pandas as pd
@@ -14,15 +13,21 @@ parameter_anounceType = '&anounceType='
 deptId_txt = open('agency_code.txt', 'r')
 anounceType_txt = open('anounceType.txt', 'r')
 
+deptId_ = []
+anounceType_ = []
+
 link_ = []
 
-for anounceType in anounceType_txt:
-    pass
 for deptId in deptId_txt:
-    # link_.append(url + parameter_deptId + deptId + parameter_anounceType + anounceType)
-    url_str = url + parameter_deptId + deptId + parameter_anounceType + anounceType
-    url_str = url_str.replace('\n', '')
-    link_.append(url_str)
+    deptId_.append(deptId)
+for anounceType in anounceType_txt:
+    anounceType_.append(anounceType)
+
+for deptId in deptId_:
+    for anounceType in anounceType_:
+        url_str = url + parameter_deptId + deptId + parameter_anounceType + anounceType
+        url_str = url_str.replace('\n', '')
+        link_.append(url_str)
 
 # print(link_)
 
