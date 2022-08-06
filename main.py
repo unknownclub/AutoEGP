@@ -16,83 +16,89 @@ anounceType_txt = open('anounceType.txt', 'r')
 deptId_ = []
 anounceType_ = []
 
-link_ = []
-
 for deptId in deptId_txt:
     deptId_.append(deptId)
 for anounceType in anounceType_txt:
     anounceType_.append(anounceType)
 
-for deptId in deptId_:
-    for anounceType in anounceType_:
-        url_str = url + parameter_deptId + deptId + parameter_anounceType + anounceType
-        url_str = url_str.replace('\n', '')
-        link_.append(url_str)
 
-# print(link_)
+today = date.today().strftime('%d%m%Y')
+tomonth = date.today().strftime('%B')
+toyear = date.today().strftime('%Y')
+
+path_location = 'EGP/' + tomonth + '/' + toyear
 
 
 def auto_egp():
-
-    today = date.today().strftime('%d%m%Y')
-    tomonth = date.today().strftime('%B')
-    toyear = date.today().strftime('%Y')
-
-    path_location = 'EGP/' + tomonth + '/' + toyear
 
     if os.path.isdir(path_location) == False:
         os.makedirs(path_location)
 
     list_test = {}
 
-    for _i in link_:
-        # print(_i)
+    for deptId in deptId_:
+        for anounceType in anounceType_:
+            url_str = url + parameter_deptId + deptId + parameter_anounceType + anounceType
+            url_str = url_str.replace('\n', '')
 
-        url = urlopen(_i)
+        # for _i in link_:
 
-        root = ET.parse(url).getroot()
+            url_open = urlopen(url_str)
 
-        # get title
-        for rss in root:
-            for channel in rss:
-                if channel.tag == 'item':
-                    # print(channel.tag)
-                    for item in channel:
-                        if item.tag == 'description' or item.tag == 'guid':
-                            pass
-                        else:
-                            list_test.update({
-                                item.tag: []
-                            })
+            root = ET.parse(url_open).getroot()
 
-        # print(list_test)
+            # get title
+            for rss in root:
+                for channel in rss:
+                    if channel.tag == 'item':
+                        # print(channel.tag)
+                        for item in channel:
+                            if item.tag == 'description' or item.tag == 'guid':
+                                pass
+                            else:
+                                list_test.update({
+                                    item.tag: []
+                                })
+                        list_test.update({
+                            'deptId': []
+                        })
 
-        # get data
-        for rss in root:
-            for channel in rss:
-                if channel.tag == 'item':
-                    # print(channel.tag)
-                    for item in channel:
-                        # print(item.tag)
-                        if item.tag == 'description' or item.tag == 'guid':
-                            pass
-                        else:
-                            # print(item.text)
-                            list_test[item.tag].append(item.text)
+            # get data
+            for rss in root:
+                for channel in rss:
+                    if channel.tag == 'item':
+                        # print(channel.tag)
+                        for item in channel:
+                            # print(item.tag)
+                            if item.tag == 'description' or item.tag == 'guid':
+                                pass
+                            else:
+                                # print(item.text)
+                                list_test[item.tag].append(item.text)
+                        deptId_str = deptId
+                        deptId_str = deptId_str.replace('\n', '')
+                        list_test['deptId'].append(deptId_str)
 
-        # print(list_test)
+            # print(list_test)
 
-        df = pd.DataFrame(list_test)
+            df = pd.DataFrame(list_test)
+            df.drop_duplicates(subset='title', inplace=True)
 
-        file_csv = path_location + '/' + today + '.txt'     # .csv ภาษาไทย เอ่อออ
+            file_csv = path_location + '/' + today + '.csv'     # .csv ภาษาไทย เอ่อออ
 
-        if os.path.isfile(file_csv) == True:
-            df.to_csv(file_csv, index=False, mode='a', header=False)
-        else:
-            df.to_csv(file_csv, index=False, mode='a')
+            if os.path.isfile(file_csv) == True:
+                df.to_csv(file_csv, index=False, mode='a', header=False)
+            else:
+                df.to_csv(file_csv, index=False, mode='a')
+
+
+
+def upload():
+    pass
 
 
 
 auto_egp()
+upload()
 
 
