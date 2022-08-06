@@ -32,7 +32,7 @@ for deptId in deptId_:
 # print(link_)
 
 
-def pull_egp():
+def auto_egp():
 
     today = date.today().strftime('%d%m%Y')
     tomonth = date.today().strftime('%B')
@@ -93,6 +93,6 @@ def pull_egp():
 
 
 
-pull_egp()
+auto_egp()
 
 
