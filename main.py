@@ -1,12 +1,33 @@
+from posixpath import split
 from urllib.request import urlopen
 import xml.etree.ElementTree as ET
 import pandas as pd
 from datetime import date
 import os
 
+
+url = 'http://process3.gprocurement.go.th/EPROCRssFeedWeb/egpannouncerss.xml'
+parameter_deptId = '?deptId='
+parameter_anounceType = '&anounceType='
+
+
+deptId_txt = open('agency_code.txt', 'r')
+anounceType_txt = open('anounceType.txt', 'r')
+
+link_ = []
+
+for anounceType in anounceType_txt:
+    pass
+for deptId in deptId_txt:
+    # link_.append(url + parameter_deptId + deptId + parameter_anounceType + anounceType)
+    url_str = url + parameter_deptId + deptId + parameter_anounceType + anounceType
+    url_str = url_str.replace('\n', '')
+    link_.append(url_str)
+
+# print(link_)
+
+
 def pull_egp():
-    
-    link_txt = open('link.txt', 'r')
 
     today = date.today().strftime('%d%m%Y')
     tomonth = date.today().strftime('%B')
@@ -19,7 +40,7 @@ def pull_egp():
 
     list_test = {}
 
-    for _i in link_txt:
+    for _i in link_:
         # print(_i)
 
         url = urlopen(_i)
