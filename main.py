@@ -92,17 +92,7 @@ def auto_egp():
 
 
 
-def upload():
-
-    file_csv = path_location + '/' + today + '.csv'
-    df = pd.read_csv(file_csv)
-    df.drop_duplicates(subset='title', inplace=True)
-    # print(df)
-    df.to_csv(file_csv, index=False)
-
-
 
 auto_egp()
-upload()
 
 
