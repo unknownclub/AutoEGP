@@ -1,8 +1,10 @@
 # Auto E-GP
 
-python 3.8.10
+python 3.8
 
 pandas 1.4.3
+
+mariadb
 
 # How to fixed : lookuperror unknown encoding windows-874
 Location C:\Users\username\AppData\Local\Programs\Python\Python38\Lib\encodings
