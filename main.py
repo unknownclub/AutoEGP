@@ -131,7 +131,7 @@ def upload():
     if list_ == []:
         # print(list_)
         for i in range(len(df['title'])):
-            print('FIRST INSERT TABLE')
+            # print('FIRST INSERT TABLE')
             sql = "INSERT INTO `egp` (`title`, `link`, `pubDate`, `deptID`) VALUES ('" + str(df['title'][i]) + "','" + str(df['link'][i]) + "','" + str(df['pubDate'][i]) + "','" + str(df['deptId'][i]) + "')"
             cursor.execute(sql)
             conn.commit()
@@ -139,7 +139,7 @@ def upload():
         for i in range(len(df['title'])):
             # print(i)
             if df['title'][i] != list_[i]:
-                print('INSERT')
+                # print('INSERT')
                 sql = "INSERT INTO `egp` (`title`, `link`, `pubDate`, `deptID`) VALUES ('" + str(df['title'][i]) + "','" + str(df['link'][i]) + "','" + str(df['pubDate'][i]) + "','" + str(df['deptId'][i]) + "')"
                 cursor.execute(sql)
                 conn.commit()
@@ -150,8 +150,7 @@ def upload():
 
 
 
-
-
+print('AUTO E-GP By Avatart0Dev :)')
 auto_egp()
 data_duplicate()
 upload()
