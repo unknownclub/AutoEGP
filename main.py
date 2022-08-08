@@ -1,3 +1,4 @@
+from re import X
 from urllib.request import urlopen
 import xml.etree.ElementTree as ET
 import pandas as pd
@@ -41,8 +42,6 @@ def auto_egp():
         for anounceType in anounceType_:
             url_str = url + parameter_deptId + deptId + parameter_anounceType + anounceType
             url_str = url_str.replace('\n', '')
-
-        # for _i in link_:
 
             url_open = urlopen(url_str)
 
@@ -102,14 +101,21 @@ def data_duplicate():
     # print(df)
     df.to_csv(file_csv, index=False)
 
-    
 
 
 def upload():
 
     df = pd.read_csv(file_csv)
     # print(df)
-    pass
+
+    from sqlalchemy import create_engine
+    engine = create_engine('mysql+pymysql://root:''@localhost:3306/test')
+    engine.connect()
+    df.to_sql('egp', engine, if_exists='append', index=False)
+
+    # test = engine.execute("SELECT * FROM egp").fetchall()
+    # print(test)
+
 
 
 
