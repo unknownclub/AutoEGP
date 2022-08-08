@@ -1,28 +1,18 @@
-from datetime import datetime
-
-# Connect Database
-username = 'root'
-passwd = ''
-hostname = 'localhost'
-db = 'test'
-port = '3306'
-
-today = datetime.now().strftime('%d%m%Y')
-tomonth = datetime.now().strftime('%B')
-toyear = datetime.now().strftime('%Y')
-
-path_location = 'EGP/' + toyear+ '/' + tomonth
-
-file_csv = path_location + '/' + today + '.csv'
-   
-
 def auto_egp():
 
     from urllib.request import urlopen
     import xml.etree.ElementTree as ET
     import os
     import pandas as pd
+    from datetime import datetime
 
+    today = datetime.now().strftime('%d%m%Y')
+    tomonth = datetime.now().strftime('%B')
+    toyear = datetime.now().strftime('%Y')
+
+    path_location = 'EGP/' + toyear+ '/' + tomonth
+
+    file_csv = path_location + '/' + today + '.csv'
 
     url = 'http://process3.gprocurement.go.th/EPROCRssFeedWeb/egpannouncerss.xml'
     parameter_deptId = '?deptId='
@@ -100,6 +90,15 @@ def auto_egp():
 def data_duplicate(self):
 
     import pandas as pd
+    from datetime import datetime
+
+    today = datetime.now().strftime('%d%m%Y')
+    tomonth = datetime.now().strftime('%B')
+    toyear = datetime.now().strftime('%Y')
+
+    path_location = 'EGP/' + toyear+ '/' + tomonth
+
+    file_csv = path_location + '/' + today + '.csv'
 
     # ตัดข้อมูลซ้ำ
     file_csv = path_location + '/' + today + '.csv'
@@ -111,6 +110,22 @@ def data_duplicate(self):
 def upload():
 
     import pandas as pd
+    from datetime import datetime
+
+    # Connect Database
+    username = 'root'
+    passwd = ''
+    hostname = 'localhost'
+    db = 'test'
+    port = '3306'
+
+    today = datetime.now().strftime('%d%m%Y')
+    tomonth = datetime.now().strftime('%B')
+    toyear = datetime.now().strftime('%Y')
+
+    path_location = 'EGP/' + toyear+ '/' + tomonth
+
+    file_csv = path_location + '/' + today + '.csv'
 
     df = pd.read_csv(file_csv)
     # print(df)
