@@ -87,10 +87,13 @@ def auto_egp():
             else:
                 df.to_csv(file_csv, index=False, mode='a')
 
+
+
 def data_duplicate():
 
     import pandas as pd
     from datetime import datetime
+    import os
 
     today = datetime.now().strftime('%d%m%Y')
     tomonth = datetime.now().strftime('%B')
@@ -101,16 +104,22 @@ def data_duplicate():
     file_csv = path_location + '/' + today + '.csv'
 
     # ตัดข้อมูลซ้ำ
-    file_csv = path_location + '/' + today + '.csv'
-    df = pd.read_csv(file_csv)
-    df.drop_duplicates(subset='title', inplace=True)
-    # print(df)
-    df.to_csv(file_csv, index=False)
+    if os.path.isfile(file_csv) == True:
+        df = pd.read_csv(file_csv)
+        df.drop_duplicates(inplace=True)
+        # print(df)
+        df.to_csv(file_csv, index=False)
+    else:
+        print('Not Directory')
+
+
 
 def upload():
 
+    from sqlalchemy import create_engine
     import pandas as pd
     from datetime import datetime
+    import os
 
     # Connect Database
     username = 'root'
@@ -127,13 +136,16 @@ def upload():
 
     file_csv = path_location + '/' + today + '.csv'
 
-    df = pd.read_csv(file_csv)
-    # print(df)
+    if os.path.isfile(file_csv) == True:
+        df = pd.read_csv(file_csv)
+        # print(df)
 
-    from sqlalchemy import create_engine
-    engine = create_engine('mysql+pymysql://' + username + ':' + passwd + '@' + hostname + ':' + port + '/' + db + '')
-    engine.connect()
-    df.to_sql('egp', engine, if_exists='append', index=False)
+        # insert data
+        engine = create_engine('mysql+pymysql://' + username + ':' + passwd + '@' + hostname + ':' + port + '/' + db + '')
+        engine.connect()
+        df.to_sql('egp', engine, if_exists='append', index=False)
+    else:
+        print('Not Directory')
 
     # test = engine.execute("SELECT * FROM egp").fetchall()
     # print(test)
@@ -146,6 +158,7 @@ print("""
     AutoEGP By Avatart0Dev :)
     
 """)
+
 auto_egp()
 data_duplicate()
 upload()
