@@ -1,19 +1,20 @@
-# Auto E-GP
+# Auto E-GP Python 3.8
 
-python 3.8
+# How to install
+    pip install -r requirements.txt
 
-pandas 1.4.3
+# Database mariadb or mysql
 
-mariadb
 
 # How to fixed : lookuperror unknown encoding windows-874
+
 Location C:\Users\username\AppData\Local\Programs\Python\Python38\Lib\encodings
 
 Edit aliases.py
 
-      # cp874 codec
-      '874'                : 'cp874',
-      'windows_874'        : 'cp874',
+    # cp874 codec
+    '874'                : 'cp874',
+    'windows_874'        : 'cp874',
 
 
-# ขายพ่องตาย
+#ห้ามขาย ขายพ่องตาย
