@@ -104,16 +104,6 @@ def data_duplicate():
 
     
 
-def insert_():
-    sql = "SELECT title FROM egp"
-    cursor.execute(sql)
-    result = cursor.fetchall()
-    for i in result:
-        # print(x)
-        for _i in i:
-            # print(_i)
-            list_.append(_i)
-
 
 def upload():
 
