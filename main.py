@@ -1,4 +1,3 @@
-from re import X
 from urllib.request import urlopen
 import xml.etree.ElementTree as ET
 import pandas as pd
