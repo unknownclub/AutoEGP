@@ -1,9 +1,19 @@
-from urllib.request import urlopen
-import xml.etree.ElementTree as ET
-import pandas as pd
-from datetime import date
-import os
+from datetime import datetime
 
+# Connect Database
+username = 'root'
+passwd = ''
+hostname = 'localhost'
+db = 'test'
+port = '3306'
+
+today = datetime.now().strftime('%d%m%Y')
+tomonth = datetime.now().strftime('%B')
+toyear = datetime.now().strftime('%Y')
+
+path_location = 'EGP/' + toyear+ '/' + tomonth
+
+file_csv = path_location + '/' + today + '.csv'
 
 url = 'http://process3.gprocurement.go.th/EPROCRssFeedWeb/egpannouncerss.xml'
 parameter_deptId = '?deptId='
@@ -20,17 +30,14 @@ for deptId in deptId_txt:
     deptId_.append(deptId)
 for anounceType in anounceType_txt:
     anounceType_.append(anounceType)
-
-
-today = date.today().strftime('%d%m%Y')
-tomonth = date.today().strftime('%B')
-toyear = date.today().strftime('%Y')
-
-path_location = 'EGP/' + toyear+ '/' + tomonth
-
-file_csv = path_location + '/' + today + '.csv'
+    
 
 def auto_egp():
+
+    from urllib.request import urlopen
+    import xml.etree.ElementTree as ET
+    import os
+    import pandas as pd
 
     if os.path.isdir(path_location) == False:
         os.makedirs(path_location)
@@ -89,9 +96,9 @@ def auto_egp():
             else:
                 df.to_csv(file_csv, index=False, mode='a')
 
+def data_duplicate(self):
 
-
-def data_duplicate():
+    import pandas as pd
 
     # ตัดข้อมูลซ้ำ
     file_csv = path_location + '/' + today + '.csv'
@@ -100,15 +107,15 @@ def data_duplicate():
     # print(df)
     df.to_csv(file_csv, index=False)
 
-
-
 def upload():
+
+    import pandas as pd
 
     df = pd.read_csv(file_csv)
     # print(df)
 
     from sqlalchemy import create_engine
-    engine = create_engine('mysql+pymysql://root:''@localhost:3306/test')
+    engine = create_engine('mysql+pymysql://' + username + ':' + passwd + '@' + hostname + ':' + port + '/' + db + '')
     engine.connect()
     df.to_sql('egp', engine, if_exists='append', index=False)
 
@@ -118,7 +125,11 @@ def upload():
 
 
 
-print('AUTO E-GP By Avatart0Dev :)')
+print("""
+
+    AutoEGP By Avatart0Dev :)
+    
+""")
 auto_egp()
 data_duplicate()
 upload()
