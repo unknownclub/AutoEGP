@@ -14,23 +14,7 @@ toyear = datetime.now().strftime('%Y')
 path_location = 'EGP/' + toyear+ '/' + tomonth
 
 file_csv = path_location + '/' + today + '.csv'
-
-url = 'http://process3.gprocurement.go.th/EPROCRssFeedWeb/egpannouncerss.xml'
-parameter_deptId = '?deptId='
-parameter_anounceType = '&anounceType='
-
-
-deptId_txt = open('deptid.txt', 'r')
-anounceType_txt = open('anouncetype.txt', 'r')
-
-deptId_ = []
-anounceType_ = []
-
-for deptId in deptId_txt:
-    deptId_.append(deptId)
-for anounceType in anounceType_txt:
-    anounceType_.append(anounceType)
-    
+   
 
 def auto_egp():
 
@@ -38,6 +22,23 @@ def auto_egp():
     import xml.etree.ElementTree as ET
     import os
     import pandas as pd
+
+
+    url = 'http://process3.gprocurement.go.th/EPROCRssFeedWeb/egpannouncerss.xml'
+    parameter_deptId = '?deptId='
+    parameter_anounceType = '&anounceType='
+
+
+    deptId_txt = open('deptid.txt', 'r')
+    anounceType_txt = open('anouncetype.txt', 'r')
+
+    deptId_ = []
+    anounceType_ = []
+
+    for deptId in deptId_txt:
+        deptId_.append(deptId)
+    for anounceType in anounceType_txt:
+        anounceType_.append(anounceType)
 
     if os.path.isdir(path_location) == False:
         os.makedirs(path_location)
