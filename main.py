@@ -87,7 +87,7 @@ def auto_egp():
             else:
                 df.to_csv(file_csv, index=False, mode='a')
 
-def data_duplicate(self):
+def data_duplicate():
 
     import pandas as pd
     from datetime import datetime
