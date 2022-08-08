@@ -102,14 +102,7 @@ def data_duplicate():
     # print(df)
     df.to_csv(file_csv, index=False)
 
-
-
-import mysql.connector
-conn = mysql.connector.connect(user='root', password='',host='localhost', database='test')
-cursor = conn.cursor()
-
-# insert ข้อมูลที่ไม่ซ้ำ
-list_ = []
+    
 
 def insert_():
     sql = "SELECT title FROM egp"
@@ -126,27 +119,7 @@ def upload():
 
     df = pd.read_csv(file_csv)
     # print(df)
-    
-    insert_()
-    if list_ == []:
-        # print(list_)
-        for i in range(len(df['title'])):
-            # print('FIRST INSERT TABLE')
-            sql = "INSERT INTO `egp` (`title`, `link`, `pubDate`, `deptID`) VALUES ('" + str(df['title'][i]) + "','" + str(df['link'][i]) + "','" + str(df['pubDate'][i]) + "','" + str(df['deptId'][i]) + "')"
-            cursor.execute(sql)
-            conn.commit()
-    else:
-        for i in range(len(df['title'])):
-            # print(i)
-            if df['title'][i] != list_[i]:
-                # print('INSERT')
-                sql = "INSERT INTO `egp` (`title`, `link`, `pubDate`, `deptID`) VALUES ('" + str(df['title'][i]) + "','" + str(df['link'][i]) + "','" + str(df['pubDate'][i]) + "','" + str(df['deptId'][i]) + "')"
-                cursor.execute(sql)
-                conn.commit()
-            else:
-                print('NOT INSERT')
-    cursor.close()
-    conn.close()
+    pass
 
 
 
