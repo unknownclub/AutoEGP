@@ -110,7 +110,7 @@ def data_duplicate():
         # print(df)
         df.to_csv(file_csv, index=False)
     else:
-        print('Not Directory')
+        print('No Directory')
 
 
 
@@ -145,7 +145,7 @@ def upload():
         engine.connect()
         df.to_sql('egp', engine, if_exists='append', index=False)
     else:
-        print('Not Directory')
+        print('No Directory')
 
     # test = engine.execute("SELECT * FROM egp").fetchall()
     # print(test)
