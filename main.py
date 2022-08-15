@@ -10,7 +10,7 @@ def auto_egp():
     tomonth = datetime.now().strftime('%B')
     toyear = datetime.now().strftime('%Y')
 
-    path_location = 'EGP/' + toyear+ '/' + tomonth
+    path_location = 'EGP/' + toyear + '/' + tomonth
 
     file_csv = path_location + '/' + today + '.csv'
 
@@ -44,6 +44,7 @@ def auto_egp():
 
             root = ET.parse(url_open).getroot()
 
+
             # get title
             for rss in root:
                 for channel in rss:
@@ -60,6 +61,9 @@ def auto_egp():
                             'deptId': []
                         })
 
+            # print(list_test)
+
+
             # get data
             for rss in root:
                 for channel in rss:
@@ -75,17 +79,20 @@ def auto_egp():
                         deptId_str = deptId
                         deptId_str = deptId_str.replace('\n', '')
                         list_test['deptId'].append(deptId_str)
+            
 
             # print(list_test)
 
-            df = pd.DataFrame(list_test)
+            if list_test != {}:
 
-            # .csv ภาษาไทย เอ่อออ
+                df = pd.DataFrame(list_test)
 
-            if os.path.isfile(file_csv) == True:
-                df.to_csv(file_csv, index=False, mode='a', header=False)
-            else:
-                df.to_csv(file_csv, index=False, mode='a')
+                # .csv ภาษาไทย เอ่อออ
+
+                if os.path.isfile(file_csv) == True:
+                    df.to_csv(file_csv, index=False, mode='a', header=False)
+                else:
+                    df.to_csv(file_csv, index=False)
 
 
 
@@ -99,7 +106,7 @@ def data_duplicate():
     tomonth = datetime.now().strftime('%B')
     toyear = datetime.now().strftime('%Y')
 
-    path_location = 'EGP/' + toyear+ '/' + tomonth
+    path_location = 'EGP/' + toyear + '/' + tomonth
 
     file_csv = path_location + '/' + today + '.csv'
 
@@ -132,7 +139,7 @@ def upload():
     tomonth = datetime.now().strftime('%B')
     toyear = datetime.now().strftime('%Y')
 
-    path_location = 'EGP/' + toyear+ '/' + tomonth
+    path_location = 'EGP/' + toyear + '/' + tomonth
 
     file_csv = path_location + '/' + today + '.csv'
 
