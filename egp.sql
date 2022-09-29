@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2022 at 09:15 AM
+-- Generation Time: Aug 23, 2022 at 11:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -32,7 +32,11 @@ CREATE TABLE `egp` (
   `title` text NOT NULL,
   `link` text NOT NULL,
   `pubDate` text NOT NULL,
-  `deptID` text NOT NULL
+  `numID` text NOT NULL,
+  `pubT` text NOT NULL,
+  `pubD` text NOT NULL,
+  `pubM` text NOT NULL,
+  `pubY` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
