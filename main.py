@@ -145,7 +145,8 @@ def data_duplicate():
     # ตัดข้อมูลซ้ำ
     if os.path.isfile(file_csv) == True:
         df = pd.read_csv(file_csv)
-        df.drop_duplicates(inplace=True)
+        df.sort_values('link', inplace=True)
+        df.drop_duplicates(subset='link', inplace=True, keep=False)
         # print(df)
         df.to_csv(file_csv, index=False)
     else:
