@@ -32,7 +32,7 @@ CREATE TABLE `egp` (
   `title` text NOT NULL,
   `link` text NOT NULL,
   `pubDate` text NOT NULL,
-  `numID` text NOT NULL,
+  `deptID` text NOT NULL,
   `pubT` text NOT NULL,
   `pubD` text NOT NULL,
   `pubM` text NOT NULL,
