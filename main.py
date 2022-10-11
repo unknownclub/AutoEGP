@@ -41,8 +41,7 @@ def auto_egp():
     for deptId in deptId_:
         for anounceType in anounceType_:
             url_str = url + parameter_deptId + deptId + parameter_anounceType + anounceType
-            url_str = url_str.replace('\n', '')
-            
+
             try:
                 try:
                     url_open = urlopen(url_str)
@@ -69,6 +68,8 @@ def auto_egp():
                                     'pubY': []
                                 })
 
+                    date_egp = datetime
+
                     # get data
                     for rss in root:
                         for channel in rss:
@@ -80,34 +81,34 @@ def auto_egp():
                                         pass
                                     else:
                                         # print(item.text)
-                                        list_test[item.tag].append(item.text)
-                                deptId_str = deptId
-                                deptId_str = deptId_str.replace('\n', '')
-                                list_test['deptID'].append(deptId_str)
-                                anounceType_str = anounceType
-                                anounceType_str = anounceType_str.replace('\n', '')
-                                #print(anounceType_str)
-                                if anounceType_str == 'W0':
+
+                                        if item.tag == 'pubDate':
+                                            list_test[item.tag].append(item.text)
+                                            pubDate_split = item.text.split('-')
+                                            list_test['pubD'].append(pubDate_split[2])
+                                            list_test['pubM'].append(pubDate_split[1])
+                                            list_test['pubY'].append(pubDate_split[0])
+                                        else:
+                                            list_test[item.tag].append(item.text)
+                                list_test['deptID'].append(deptId)
+                                if anounceType == 'W0':
                                     list_test['pubT'].append(1)
-                                elif anounceType_str == 'D1':
+                                elif anounceType == 'D1':
                                     list_test['pubT'].append(2)
-                                elif anounceType_str == 'P0':
+                                elif anounceType == 'P0':
                                     list_test['pubT'].append(3)
-                                elif anounceType_str == '15':
+                                elif anounceType == '15':
                                     list_test['pubT'].append(4)
-                                elif anounceType_str == 'D0':
+                                elif anounceType == 'D0':
                                     list_test['pubT'].append(5)
-                                elif anounceType_str == 'W1':
+                                elif anounceType == 'W1':
                                     list_test['pubT'].append(6)
-                                elif anounceType_str == 'D2':
+                                elif anounceType == 'D2':
                                     list_test['pubT'].append(7)
-                                elif anounceType_str == 'W2':
+                                elif anounceType == 'W2':
                                     list_test['pubT'].append(8)
                                 else:       # B0
                                     list_test['pubT'].append(9)
-                                list_test['pubD'].append(today_d)
-                                list_test['pubM'].append(tomonth_m)
-                                list_test['pubY'].append(toyear)
 
                     # print(list_test)
 
@@ -123,34 +124,10 @@ def auto_egp():
                             df.to_csv(file_csv, index=False)
                 except ConnectionResetError as e:
                     print(e)
+                list_test.clear()
             except HTTPError as e:
                 print(e)
-
-
-
-def data_duplicate():
-
-    import pandas as pd
-    from datetime import datetime
-    import os
-
-    today = datetime.now().strftime('%d%m%Y')
-    tomonth = datetime.now().strftime('%B')
-    toyear = datetime.now().strftime('%Y')
-
-    path_location = 'EGP/' + toyear+ '/' + tomonth
-
-    file_csv = path_location + '/' + today + '.csv'
-
-    # ตัดข้อมูลซ้ำ
-    if os.path.isfile(file_csv) == True:
-        df = pd.read_csv(file_csv)
-        df.sort_values('link', inplace=True)
-        df.drop_duplicates(subset='link', inplace=True, keep=False)
-        # print(df)
-        df.to_csv(file_csv, index=False)
-    else:
-        print('No Directory')
+        list_test.clear()
 
 
 
@@ -221,5 +198,4 @@ print("""
 """)
 
 auto_egp()
-data_duplicate()
 upload_mariadb()    # Database MariaDB
