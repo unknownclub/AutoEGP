@@ -84,10 +84,10 @@ def auto_egp():
 
                                         if item.tag == 'pubDate':
                                             list_test[item.tag].append(item.text)
-                                            pubDate_split = item.text.split('-')
-                                            list_test['pubD'].append(pubDate_split[2])
-                                            list_test['pubM'].append(pubDate_split[1])
-                                            list_test['pubY'].append(pubDate_split[0])
+                                            pubDate_str = datetime.strptime(item.text, '%Y-%m-%d').date()
+                                            list_test['pubD'].append(pubDate_str.strftime('%d'))
+                                            list_test['pubM'].append(pubDate_str.strftime('%m'))
+                                            list_test['pubY'].append(pubDate_str.strftime('%Y'))
                                         else:
                                             list_test[item.tag].append(item.text)
                                 list_test['deptID'].append(deptId)
