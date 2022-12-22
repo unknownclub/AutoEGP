@@ -119,10 +119,10 @@ def auto_egp():
                         else:
                             df.to_csv(file_csv, index=False)
 
-                except ConnectionError as e:
-                    print(e)
-            except HTTPError as e:
-                print(e)
+                except ET.ParseError as err:
+                    print(err)
+            except HTTPError as err:
+                print(err)
         list_test.clear()
 
 
