@@ -122,7 +122,7 @@ def auto_egp():
                             df.to_csv(file_csv, index=False, mode='a', header=False)
                         else:
                             df.to_csv(file_csv, index=False)
-                except ConnectionResetError as e:
+                except ConnectionError as e:
                     print(e)
                 list_test.clear()
             except HTTPError as e:
