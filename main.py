@@ -43,11 +43,9 @@ def auto_egp():
             url_str = url + parameter_deptId + deptId + parameter_anounceType + anounceType
 
             try:
+                url_open = urlopen(url_str)
                 try:
-                    url_open = urlopen(url_str)
-
                     root = ET.parse(url_open).getroot()
-
                     # get title
                     for rss in root:
                         for channel in rss:
@@ -61,14 +59,12 @@ def auto_egp():
                                             item.tag: []
                                         })
                                 list_test.update({
-                                    'deptID': [],
+                                    'numID': [],
                                     'pubT': [],
                                     'pubD': [],
                                     'pubM': [],
                                     'pubY': []
                                 })
-
-                    date_egp = datetime
 
                     # get data
                     for rss in root:
@@ -90,7 +86,7 @@ def auto_egp():
                                             list_test['pubY'].append(pubDate_str.strftime('%Y'))
                                         else:
                                             list_test[item.tag].append(item.text)
-                                list_test['deptID'].append(deptId)
+                                list_test['numID'].append(deptId)
                                 if anounceType == 'W0':
                                     list_test['pubT'].append(1)
                                 elif anounceType == 'D1':
@@ -122,9 +118,9 @@ def auto_egp():
                             df.to_csv(file_csv, index=False, mode='a', header=False)
                         else:
                             df.to_csv(file_csv, index=False)
+
                 except ConnectionError as e:
                     print(e)
-                list_test.clear()
             except HTTPError as e:
                 print(e)
         list_test.clear()
