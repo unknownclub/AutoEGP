@@ -1,4 +1,4 @@
-# Auto E-GP Python 3.8 Free
+# Auto E-GP Python 3.8
 
 # How to install Packages
     pip install -r requirements.txt
