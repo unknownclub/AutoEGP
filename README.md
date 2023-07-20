@@ -8,7 +8,7 @@
 
 # How to fixed : lookuperror unknown encoding windows-874
 
-Location C:\Users\[username]\AppData\Local\Programs\Python\Python38\Lib\encodings
+Location C:\Users\username\AppData\Local\Programs\Python\Python38\Lib\encodings
 
 Edit aliases.py
 
